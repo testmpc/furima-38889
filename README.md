@@ -19,7 +19,11 @@
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | explanation        | text       | null: false                    |
-| category           | string     | null: false                    |
+| category_id        | string     | null: false                    |
+| situation_id       | string     | null: false                    |
+| delivery_charge_id | string     | null: false                    |
+| region_of_origin_id| string     | null: false                    |
+| days_to_ship_id    | string     | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |  
 
