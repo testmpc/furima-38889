@@ -1,6 +1,8 @@
 # テーブル設計
 
 ## users テーブル
+has_many :exhibits
+has_many :orders
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -14,6 +16,8 @@
 | date_of_birth      | date       | null: false                    |
 
 ## exhibits テーブル
+belongs_to :user
+has_many :orders
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -28,6 +32,9 @@
 | user               | references | null: false, foreign_key: true |  
 
 ## orders テーブル
+belongs_to :user
+belongs_to :exhibit
+has_many :addresses
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -36,11 +43,12 @@
 
 
 ## addresses テーブル
+belongs_to :order
+
 | post_code          | string     | null: false                    |
-| prefecture         | string     | null: false                    |
+| region_of_origin_id| string     | null: false                    |
 | municipality       | string     | null: false                    |
 | block_number       | string     | null: false                    |
-| building           | string     | null: false                    |
-| tel_number         | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
-| exhibits           | references | null: false, foreign_key: true |
+| building           | string     |                                |
+| tel_number         | string     | null: false                    |
+| order              | references | null: false, foreign_key: true |
