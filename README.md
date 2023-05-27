@@ -3,7 +3,6 @@
 ## users テーブル
 has_many :exhibits
 has_many :orders
-has_many :addresses
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -43,7 +42,6 @@ has_one    :address
 | exhibit            | references | null: false, foreign_key: true |
 
 ## addresses テーブル
-belongs_to :user
 belongs_to :order
 
 | Column             | Type       | Options                        |
@@ -54,5 +52,4 @@ belongs_to :order
 | block_number       | string     | null: false                    |
 | building           | string     |                                |
 | tel_number         | string     | null: false                    |
-| user               | references | null: false, foreign_key: true |
 | order              | references | null: false, foreign_key: true |
