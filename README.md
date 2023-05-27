@@ -3,6 +3,7 @@
 ## users テーブル
 has_many :exhibits
 has_many :orders
+has_many :addresses
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -29,7 +30,7 @@ has_one    :order
 | region_of_origin_id| integer    | null: false                    |
 | days_to_ship_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |  
+| user               | references | null: false, foreign_key: true |
 
 ## orders テーブル
 belongs_to :user
@@ -42,12 +43,16 @@ has_one    :address
 | exhibit            | references | null: false, foreign_key: true |
 
 ## addresses テーブル
+belongs_to :user
 belongs_to :order
 
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
 | post_code          | string     | null: false                    |
 | region_of_origin_id| integer    | null: false                    |
 | municipality       | string     | null: false                    |
 | block_number       | string     | null: false                    |
 | building           | string     |                                |
 | tel_number         | string     | null: false                    |
+| user               | references | null: false, foreign_key: true |
 | order              | references | null: false, foreign_key: true |
