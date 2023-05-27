@@ -1,24 +1,55 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+has_many :exhibits
+has_many :orders
 
-Things you may want to cover:
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| email              | string     | null: false, unique: true      |
+| encrypted_password | string     | null: false                    |
+| nickname           | string     | null: false                    |
+| last_name          | string     | null: false                    |
+| first_name         | string     | null: false                    |
+| last_furigana      | string     | null: false                    |
+| first_furigana     | string     | null: false                    |
+| date_of_birth      | date       | null: false                    |
 
-* Ruby version
+## exhibits テーブル
+belongs_to :user
+has_one    :order
 
-* System dependencies
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| explanation        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| situation_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| region_of_origin_id| integer    | null: false                    |
+| days_to_ship_id    | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
-* Configuration
+## orders テーブル
+belongs_to :user
+belongs_to :exhibit
+has_one    :address
 
-* Database creation
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| user               | references | null: false, foreign_key: true |
+| exhibit            | references | null: false, foreign_key: true |
 
-* Database initialization
+## addresses テーブル
+belongs_to :order
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| post_code          | string     | null: false                    |
+| region_of_origin_id| integer    | null: false                    |
+| municipality       | string     | null: false                    |
+| block_number       | string     | null: false                    |
+| building           | string     |                                |
+| tel_number         | string     | null: false                    |
+| order              | references | null: false, foreign_key: true |
