@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
     end
   end
   def configure_permitted_parameters
-      t.string :last_furigana,      null: false
       devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_furigana, :first_furigana, :date_of_birth])
   end
 end
