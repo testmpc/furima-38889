@@ -10,10 +10,4 @@ class User < ApplicationRecord
   validates :last_furigana, :first_furigana, presence: true
   validates :last_furigana, :first_furigana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は、全角のカタカナで入力してください' }
   validates :date_of_birth, presence: true
-
-  validates :content, presence: true, unless: :was_attached?
-
-  def was_attached?
-    self.image.attached?
-  end
 end
