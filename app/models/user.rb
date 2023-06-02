@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :last_furigana, :first_furigana, presence: true
   validates :last_furigana, :first_furigana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は、全角のカタカナで入力してください' }
   validates :date_of_birth, presence: true
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'は、半角英数字混合で入力してください'}
 end
