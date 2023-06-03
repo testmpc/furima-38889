@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2023_06_03_114005) do
     t.text "explanation"
     t.integer "category_id"
     t.integer "situation_id"
-    t.integer "delivery_charge_id"
-    t.integer "region_of_origin_id"
-    t.integer "days_to_ship_id"
+    t.integer "shippingfee_id"
+    t.integer "prefecture_id"
+    t.integer "deliveryskd_id"
     t.integer "price"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
