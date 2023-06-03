@@ -1,7 +1,7 @@
 # テーブル設計
 
 ## users テーブル
-has_many :exhibits
+has_many :items
 has_many :orders
 
 | Column             | Type       | Options                        |
@@ -15,7 +15,7 @@ has_many :orders
 | first_furigana     | string     | null: false                    |
 | date_of_birth      | date       | null: false                    |
 
-## exhibits テーブル
+## items テーブル
 belongs_to :user
 has_one    :order
 
@@ -33,13 +33,13 @@ has_one    :order
 
 ## orders テーブル
 belongs_to :user
-belongs_to :exhibit
+belongs_to :item
 has_one    :address
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
-| exhibit            | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ## addresses テーブル
 belongs_to :order
