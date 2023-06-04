@@ -30,34 +30,59 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
 
-      it '商品カテゴリーが空（idが2から11）だと登録できない' do
+      it '商品カテゴリーが空だと登録できない' do
+        @item.category = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category is not a number")
+      end
+      it '商品カテゴリーが「---」だと登録できない' do
         @item.category = Category.first
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
 
-      it '商品の状態が空（idが2から7）だと登録できない' do
+      it '商品の状態が空だと登録できない' do
+        @item.situation = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Situation is not a number")
+      end
+      it '商品の状態が「---」だと登録できない' do
         @item.situation = Situation.first
         @item.valid?
-        expect(@item.errors.full_messages).to include("Situation can't be blank")
+        expect(@item.errors.full_messages).to include("Situation must be other than 1")
       end
 
-      it '配送費の負担が空（idが2から3）だと登録できない' do
+      it '配送費の負担が空だと登録できない' do
+        @item.shippingfee = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shippingfee is not a number")
+      end
+      it '配送費の負担が「---」だと登録できない' do
         @item.shippingfee = Shippingfee.first
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shippingfee can't be blank")
+        expect(@item.errors.full_messages).to include("Shippingfee must be other than 1")
       end
 
-      it '配送元の地域が空（idが2から48）だと登録できない' do
+      it '配送元の地域が空だと登録できない' do
+        @item.prefecture = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture is not a number")
+      end
+      it '配送元の地域が「---」だと登録できない' do
         @item.prefecture = Prefecture.first
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
-      it '配送までの日数が空（idが2から4）だと登録できない' do
+      it '配送までの日数が空だと登録できない' do
+        @item.deliveryskd = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Deliveryskd is not a number")
+      end
+      it '配送までの日数が「---」だと登録できない' do
         @item.deliveryskd = Deliveryskd.first
         @item.valid?
-        expect(@item.errors.full_messages).to include("Deliveryskd can't be blank")
+        expect(@item.errors.full_messages).to include("Deliveryskd must be other than 1")
       end
 
       it '商品価格が空だと登録できない' do
