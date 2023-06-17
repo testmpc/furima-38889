@@ -6,7 +6,6 @@ class OrderAddress
     validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :municipality
     validates :block_number
-    validates :building
     validates :tel_number, format: {with: /\A[0-9]{10,11}\z/, message: "is invalid. IInput using half-width numerical"}
     validates :user_id
     validates :item_id

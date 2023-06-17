@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if @item.user_id == current_user.id
+    return if @item.user_id == current_user.id && !Order.where(item_id: @item.id).exists?
 
     redirect_to action: :index
   end
