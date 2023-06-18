@@ -32,7 +32,7 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号が「3桁ハイフン4桁」の半角文字列以外だと購入できない' do
         @order_address.post_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
 
       it '都道府県がが空だと購入できない' do
@@ -40,7 +40,7 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
-      
+
       it '市区町村が空だと購入できない' do
         @order_address.municipality = ''
         @order_address.valid?
@@ -62,7 +62,7 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号は10桁以上11桁以内の半角数値のみでないと登録できない' do
         @order_address.tel_number = '090-1234-5678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tel number is invalid. IInput using half-width numerical")
+        expect(@order_address.errors.full_messages).to include('Tel number is invalid. IInput using half-width numerical')
       end
     end
   end
