@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to root_path if @item.user_id == current_user.id || Order.where(item_id: @item.id).exists?
+    redirect_to root_path if @item.user_id == current_user.id || @item.order != nil
     @order_address = OrderAddress.new
   end
 
@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
-      amount: Item.find(params[:item_id]).price, # 商品の値段
+      amount: @item.price, # 商品の値段
       card: order_params[:token], # カードトークン
       currency: 'jpy' # 通貨の種類（日本円）
     )
